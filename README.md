@@ -207,13 +207,13 @@ $marketingManager->takeInterview(); // Output: Asking about community building.
 ----------------
 
 Real world example
-> Extending our door example from Simple Factory. Based on your needs you might get a wooden door from a wooden door shop, iron door from an iron shop or a PVC door from the relevant shop. Plus you might need a guy with different kind of specialities to fit the door, for example a carpenter for wooden door, welder for iron door etc. As you can see there is a dependency between the doors now, wooden door needs carpenter, iron door needs a welder etc.
+> 继续我们在简单工厂模式中举的关于门的那个栗子。基于你的需求不同，你可能在一个卖木头门的工厂里买了一个木头门，在卖铁门的工厂里买了一铁门或者你很厉害了，在什么工厂中弄到个PVC材质的门，不管什么情况吧，总之你是有门的人了现在。接下来怎么办呢，有了门之后你可能会因为门材质的不同会需要一个不同的师傅来给你安一下这个门，对吧。那么现在问题就出来了吧，因为门材质不同你需要不同的安装师傅了，这就是说你等会儿挑师傅的时候对门有依赖性了。当然了，如果你是十项全能那就没什么好说的了。
 
 In plain words
-> A factory of factories; a factory that groups the individual but related/dependent factories together without specifying their concrete classes.
+> 工厂的工厂也就是抽象工厂。抽象工厂就是把一些相互独立的但是相互又有关联或者依赖的工厂组合到一起，这样儿当后面要根据某个工厂去实例化一个对象的时候就不用指定具体的类名，而是通过抽象工厂去实例化了。
 
 Wikipedia says
-> The abstract factory pattern provides a way to encapsulate a group of individual factories that have a common theme without specifying their concrete classes
+> 抽象工厂模式提供了一种可以把一些具有相同主题但是又相互独立的工厂封装到一起的方法，屏蔽了对外调用时真正的类名称以达到抽象的目的，方便扩展。
 
 **Programmatic Example**
 
@@ -266,7 +266,7 @@ class Carpenter implements DoorFittingExpert
 }
 ```
 
-Now we have our abstract factory that would let us make family of related objects i.e. wooden door factory would create a wooden door and wooden door fitting expert and iron door factory would create an iron door and iron door fitting expert
+现在我们准备把相关的类组合到一起构成我们的抽象工厂。例如： wooden door factory would create a wooden door and wooden door fitting expert and iron door factory would create an iron door and iron door fitting expert
 ```php
 interface DoorFactory
 {
@@ -322,11 +322,11 @@ $door->getDescription();  // Output: I am an iron door
 $expert->getDescription(); // Output: I can only fit iron doors
 ```
 
-As you can see the wooden door factory has encapsulated the `carpenter` and the `wooden door` also iron door factory has encapsulated the `iron door` and `welder`. And thus it had helped us make sure that for each of the created door, we do not get a wrong fitting expert.   
+就像上面的例子一样，我们的 wooden door 抽象工厂把 `carpenter` and `wooden door` 组合到了一起，对于 iron door 也是一样的。这样就保证了当以后我们想要去创建一个门的实例的时候呢它所带的配件实例一定是正确的。
 
-**When to use?**
+**When to use?** 
 
-When there are interrelated dependencies with not-that-simple creation logic involved
+当我们要去实例化一个对象的时候，如果它的创建逻辑没那么简单，而是会涉及到不止一个工厂参与的时候呢就可以采用抽象工厂设计模式啦。
 
 👷 Builder
 --------------------------------------------
