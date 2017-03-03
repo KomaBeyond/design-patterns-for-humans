@@ -119,13 +119,13 @@ echo 'Height: ' . $door->getHeight();
 --------------
 
 Real world example
-> Consider the case of a hiring manager. It is impossible for one person to interview for each of the positions. Based on the job opening, she has to decide and delegate the interview steps to different people.
+> 假如你是HR准备进行一次人事招聘。对于你个人来说由于专业，经验等各方面的因素，你不可能对一个面试者做到考察他的方方面面。那么由于你工作性质的问题，你决定将这次面试分成不同的步骤让不同的同事来执行这次面试。这其实就是一个委派的过程。
 
 In plain words
-> It provides a way to delegate the instantiation logic to child classes.
+> 工厂方法设计模式提供了一种方案，可以让你把实例化对象的逻辑委派给子类进行。
 
 Wikipedia says
-> In class-based programming, the factory method pattern is a creational pattern that uses factory methods to deal with the problem of creating objects without having to specify the exact class of the object that will be created. This is done by creating objects by calling a factory method—either specified in an interface and implemented by child classes, or implemented in a base class and optionally overridden by derived classes—rather than by calling a constructor.
+> 在面向对象编程中，工厂方法设计模式是一种创建型设计模式，她使用工厂方法的形式去创建对象，而非需要指定出特定的类去创建其对象。这是通过调用一个“工厂方法”来完成的，“工厂方法”的实现呢则是比较灵活的，你可以在一个接口中指定然后交给子类去实现，也可以在基类中实现，然后子类选择性的去重写，这都是可以的。跟这种方式相比而言调用类的构造方法去创建对象就显得有些low了。
 
  **Programmatic Example**
 
@@ -160,8 +160,8 @@ Now let us create our `HiringManager`
 abstract class HiringManager
 {
 
-    // Factory method
-    abstract public function makeInterviewer(): Interviewer;
+    // Factory method　工厂方法，这是重点
+    abstract public function makeInterviewer(): Interviewer;
 
     public function takeInterview()
     {
@@ -201,7 +201,7 @@ $marketingManager->takeInterview(); // Output: Asking about community building.
 
 **When to use?**
 
-Useful when there is some generic processing in a class but the required sub-class is dynamically decided at runtime. Or putting it in other words, when the client doesn't know what exact sub-class it might need.
+在一个类的执行流中，有些通用的处理逻辑，这些处理逻辑需要去调用的子类只有在程序动态运行时才能确定的时候，那么这个时候工厂方法设计模式就可以发挥作用了。换句话说呢就是，我们不知道要调用的具体子类是那个的时候，这个时候就应该采用工厂方法的模式去进行抽象。
 
 🔨 Abstract Factory
 ----------------
