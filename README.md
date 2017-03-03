@@ -28,39 +28,39 @@
 
 > 注意啦：下面的示例代码都是基于PHP-7写的，但是这并不会成为阻碍，因为思想永远是想通的。其它语言的支持呢，也正在努力写了，也希望你能贡献你自己的力量！
 
-设计模式的种类
+设计模式的分类
 -----------------
 
-* [创建型模式](#creational-design-patterns)
-* [结构型模式](#structural-design-patterns)
-* [行为型模式](#behavioral-design-patterns)
+* [创建型设计模式](#creational-design-patterns)
+* [结构型设计模式](#structural-design-patterns)
+* [行为型设计模式](#behavioral-design-patterns)
 
 Creational Design Patterns
 ==========================
 
 In plain words
-> Creational patterns are focused towards how to instantiate an object or group of related objects.
+> 创建型设计模式主要专注在如何实例化一个对象或者一组相关的对象。
 
 Wikipedia says
-> In software engineering, creational design patterns are design patterns that deal with object creation mechanisms, trying to create objects in a manner suitable to the situation. The basic form of object creation could result in design problems or added complexity to the design. Creational design patterns solve this problem by somehow controlling this object creation.
-
- * [Simple Factory](#-simple-factory)
- * [Factory Method](#-factory-method)
- * [Abstract Factory](#-abstract-factory)
- * [Builder](#-builder)
- * [Prototype](#-prototype)
- * [Singleton](#-singleton)
+>　在软件工程中，创建型设计模式一种专注于如何去创建一个对象的设计模式，她尝试在给定的环境中以一种恰当的方式去创建对象。在软件编程中，对象是如何被创建出来的是一个重要的议题，一不留神就可能会导致软件出现设计缺陷或者加重了软件设计的复杂度。创建型设计模式是通过某种方式来控制对象的创建从而解决该类问题。
+ 
+ * [简单工厂模式](#-simple-factory)
+ * [工厂方法模式](#-factory-method)
+ * [抽象工厂模式](#-abstract-factory)
+ * [建造者模式](#-builder)
+ * [原型模式](#-prototype)
+ * [单例模式](#-singleton)
 
 🏠 Simple Factory
 --------------
 Real world example
-> Consider, you are building a house and you need doors. It would be a mess if every time you need a door, you put on your carpenter clothes and start making a door in your house. Instead you get it made from a factory.
+> 假如你准备建造一座房子，那么你肯定会需要各种门或者窗户。如果说当你需要一个门或者窗户的时候，你就放下手头的工作然后开工去自己造一个门窗，这么做是比较累人的，而且还让你的工作看起来乱糟糟的。那么不如呢，当你需要一个门窗的时候就从一个“工厂”中拿，这样就方便多了，是吧。
 
 In plain words
-> Simple factory simply generates an instance for client without exposing any instantiation logic to the client
+> 简单工厂模式的目的就是方便的去生产一个类实例，而不需要对外暴露任何的生产细节，外部只需要负责去“要”就好了。
 
 Wikipedia says
-> In object-oriented programming (OOP), a factory is an object for creating other objects – formally a factory is a function or method that returns objects of a varying prototype or class from some method call, which is assumed to be "new".
+> 在面向对象编程中，工厂是一个用来创建其它类的类。通常情况下呢，工厂是一个函数或者方法，通过方法调用让她返回具有不同属性的对象或者类，这种行为可以看成是一种特别方式的“new”操作。
 
 **Programmatic Example**
 
@@ -113,7 +113,7 @@ echo 'Height: ' . $door->getHeight();
 
 **When to Use?**
 
-When creating an object is not just a few assignments and involves some logic, it makes sense to put it in a dedicated factory instead of repeating the same code everywhere.
+当你不止在一个地方创建具有相同执行逻辑的一个对象时，那么就需要把创建她的操作使用工厂来替代了，而不是把创建对象的代码写的到处都是。
 
 🏭 Factory Method
 --------------
